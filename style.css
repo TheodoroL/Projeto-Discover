@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* a medida do tamanho da caixa */
+  box-sizing: border-box;
+}
+
+:root {
+  /* definir as variaveis no css */
+  --text-color: #fff;
+  --bg-img: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --social-color-hover: rgba(255, 255, 255, 0.2);
+  --switch-bg: url(./assets/moon-stars.svg);
+}
+.light {
+  --text-color: #000;
+  --bg-img: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.01);
+  --social-color-hover: rgba(0, 0, 0, 0.1);
+  --switch-bg: url(./assets/sun.svg);
+}
+
+body {
+  /* background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+   vai deixar a imagem centralizada  
+  background-position: top center;
+   quando a imagem for pequena, ele vai completar as partes vazias do background 
+  background-size: cover; */
+  /* ---- Resumir tudo isso em uma linha */
+  background: var(--bg-img) no-repeat top center/cover;
+}
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+#container {
+  width: 360px;
+  /* height: 712px; */
+  /* border: 1px solid #fff; */
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/*  
+  elementos que são inline aceita apenas que deixa centralizado os pais deles ou força ele para 
+  display block 
+
+*/
+
+/* profile */
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* switch */
+#switch {
+  position: relative;
+  width: 64px;
+  /* aproveitar que o display do switch é block, nós usar o margin para centralizar o switch */
+  margin: 4px auto;
+}
+#switch button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #fff var(--switch-bg) no-repeat center;
+  /* vai fazer um sobreposição de camadas, e agora vou poder muda ele com z-index, top, buttom, left e right.
+  --------------------------------------------
+  porém tem um problema,se eu colocar o button como absolute, ele vai poder mexer em qualquer parte da página e nós só quer mexer ele dentro do switch. Dessa forma, nós vai colocar o switch como relativo, para limitar isso 
+  */
+
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  /* vai mover o button para eixo y, exemplo tenta usando -59% */
+  /*  */
+  top: 50%;
+  transform: translateY(-50%);
+}
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* links de lista */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* O gap da um espaço de 16px */
+  gap: 16px;
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  background: var(--surface-color);
+  text-decoration: none;
+  border: 1px solid var(--text-color);
+  border-radius: 8px;
+
+  /* vai colocar um blur bem suave */
+  backdrop-filter: blur(4px);
+  /* faz a msm coisa, porém alguns navegadores tem colocar o webkit para funcionar */
+  -webkit-backdrop-filter: blur(4px);
+
+  font-weight: 500;
+
+  /* quando vc for passar mouse em cima, vai fazer transição de 4s */
+  transition: all 0.4s;
+}
+
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/* social-link */
+#social-link {
+  display: flex;
+  gap: 32px;
+  padding: 24px 0;
+  /* font-size vai deixar as imagens no tamanho de 24px */
+  font-size: 24px;
+  justify-content: center;
+}
+#social-link a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.4s;
+  border-radius: 50%;
+}
+#social-link a:hover {
+  background: var(--social-color-hover);
+}
+
+footer {
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+}
