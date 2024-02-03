@@ -34,6 +34,7 @@ body {
   background-size: cover; */
   /* ---- Resumir tudo isso em uma linha */
   background: var(--bg-img) no-repeat top center/cover;
+  height: 100vh;
 }
 body * {
   font-family: "Inter", sans-serif;
@@ -172,4 +173,15 @@ footer {
   padding: 16px;
   text-align: center;
   font-size: 14px;
+}
+
+/* midia queries */
+@media (min-width: 700px) {
+  /*basicamente após chegar aos 700px, vai mudar o bg-img*/
+  :root {
+    --bg-img: url(./assets/bg-desktop.jpg);
+  }
+  .light {
+    --bg-img: url(./assets/bg-desktop-light.jpg);
+  }
 }
